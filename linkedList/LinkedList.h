@@ -79,6 +79,6 @@ class LinkedList
 	T m_size;
 };
 
-#include "LinkedList.hpp"
+#include "LinkedList.cpp"
 
 #endif
