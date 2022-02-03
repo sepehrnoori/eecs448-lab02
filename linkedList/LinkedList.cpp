@@ -29,8 +29,7 @@ bool LinkedList<T>::isEmpty() const
 template <typename T>
 int LinkedList<T>::size() const
 {
-	std::cout << "The size of the linked list is: " << m_size << '\n';
-	return(0);
+	return(m_size);
 }
 
 template <typename T>
@@ -104,6 +103,7 @@ void LinkedList<T>::addFront(T value)
 template <typename T>
 bool LinkedList<T>::removeBack()
 {
+	int nodeCount = 1;
 	Node<T>* lastNode = nullptr;
 	Node<T>* secondintoLast = nullptr;
 	bool isRemoved = false;
@@ -114,16 +114,18 @@ bool LinkedList<T>::removeBack()
 	else
 	{
 		lastNode = m_front;
-		for(int i=0; i<m_size; i++)
+		while(lastNode->getNext() != nullptr)
 		{
 		  lastNode = lastNode->getNext();
-		  if(i+2 == m_size)
+			nodeCount++;
+		  if(nodeCount+1 == m_size)
 		  {
 		    secondintoLast = lastNode;
 		  }
 		}
 		secondintoLast->setNext(nullptr);
 		delete lastNode;
+		m_size--;
 		isRemoved = true;
 
 		return(isRemoved);
